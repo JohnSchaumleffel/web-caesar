@@ -40,4 +40,7 @@ form = """
 def index():
     return form
 
+@app.route("/", methods=['POST'])
+def encrpyt():
+
 app.run()
