@@ -27,20 +27,24 @@ form = """
         </style>
     </head>
     <body>
-      <form>
+      <form method="post">
         <label for="rot">Rotate by:</label>
         <input type="text" name="rot" value="0"/>
-        <textarea name="text" />
+        <textarea type="text" name="text"></textarea>
         <input type="submit" />
       </form>
     </body>
 </html>
 """
-@app.route("/", methods=['POST'])
+@app.route("/")
 def index():
     return form
 
 @app.route("/", methods=['POST'])
 def encrpyt():
+    rot_input = int(request.form['rot'])
+    text_input = request.form['text']
+    rotated = rotate_string(text_input, rot_input)
+    return "<h1>rotated</h1>"
 
 app.run()
